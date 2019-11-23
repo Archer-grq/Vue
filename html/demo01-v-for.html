@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-for</title>
+	</head>
+	<body>
+		<h1>v-for</h1>
+		<div id="app">
+			<ol>
+				<li v-for="num in sortNums">{{num}}</li>
+			</ol>
+			<hr>
+			<ul>
+				<li v-for="(animal,index) in sortAnimals">
+					{{index+1}}.{{animal.name}}--->{{animal.age}}
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				nums:[13,56,88,665,56,64,45,544],
+				animals:[
+					{name:'草泥马',age:5},
+					{name:'艾瑞莉娅',age:85},
+					{name:'灶门炭治郎',age:8},
+					{name:'灶门祢豆子',age:96}
+				]
+			},
+			computed:{
+				//计算属性
+				sortNums:function(){
+					return this.nums.sort(sortNums);//排序时需要先指定排序规则
+				},
+				sortAnimals:function(){
+					return sortByKey(this.animals,'age')
+				}
+				
+			}
+		});
+		function sortNums(a,b){
+			return a-b;
+		};
+		function sortByKey(array,key){
+			return array.sort(function(a,b){
+				var x=a[key];
+				var y=b[key];
+				return ((x<y)?-1:((x>y)?1:0));
+			});
+		}
+	</script>
+</html>

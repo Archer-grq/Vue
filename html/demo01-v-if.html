@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-if & v-else & v-show</title>
+	</head>
+	<body>
+		<h1>v-if & v-else & v-show</h1><hr/>
+		<div id="app">
+			<p v-if="isLogin">我和我亲爱的祖国，一刻也不能分割</p>	
+			<p v-else-if="isPass">滚吧</p>
+			<p v-else="isLogin">可以分割</p>
+			
+			<p v-show="isLogin">大猪蹄子</p>
+			<!-- 
+				v-show 是在服务器提交之前 如果不满足则不提交
+				v-if 无论结果如何都会提交
+			-->
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				isLogin:false,
+				isPass:true
+			}
+		});
+	</script>
+</html>

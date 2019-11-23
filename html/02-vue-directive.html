@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>vue-directive</title>
+	</head>
+	<body>
+		<!-- 自定义指令 -->
+		<h1>vue-directive</h1><hr>
+		<div id="app">
+			<p v-grq="color">{{num}}</p>
+			<button  @click="add()">Add</button>
+		</div>	
+		<p><button onclick="unbind()">解绑</button></p>
+	</body>
+	
+	<script type="text/javascript">
+		/* 
+			Vue.directive('指令名',方法(el,binding,vnode){})
+			el : 指令所绑定的元素，可以用来直接操作DOM
+			binding: 一个对象，包含指令的很多信息
+				{
+					expression: "color"
+					name: "grq"
+					rawName: "v-grq"
+					value: "blue"
+					...
+				}
+			vnode: VUE编译生成的虚拟节点
+		*/
+		
+		Vue.directive('grq',function(el,binding){
+				// 给自定义属性绑定值
+				el.style="color:"+binding.value;
+				console.log(el);
+				console.log(binding)
+				
+		});
+		
+		Vue.directive('grq',{
+			bind:function(){//被绑定
+				console.log('1-bind');
+			},
+			inserted:function(){//绑定到节点
+				console.log('2-inserted');
+			},
+			update:function(){//更新
+				console.log('3-update');
+			},
+			componentUpdated:function(){//组件更新完成
+				console.log('4-componentUpdated');
+			},
+			unbind:function(){//解绑
+				console.log('5-unbind');
+			}
+		})
+		
+		var vm =new Vue({
+			el:'#app',
+			data:{
+				num:10,
+				color:'blue'
+			},
+			methods:{
+				add:function(){
+					this.num++;
+				}
+			}
+		});
+		function unbind(){
+			//销毁vm
+			vm.$destroy();
+		}
+	</script>
+</html>

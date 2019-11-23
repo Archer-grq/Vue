@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{msg}}
+		</div>
+		
+		<div id="app2">
+			<input type="text" v-model="msg">
+			{{msg}}
+		</div>
+	</body>
+	<script>
+		var data2={msg:"test Vue"}
+	
+		var app=new Vue({
+			el:"#app",
+			data:{
+				msg:"Hello Vue"
+			}
+		})
+		var app2=new Vue({
+			el:'#app2',
+			data:data2
+		})
+		app2.$watch('msg',function(newVal,oldVal){
+			console.log(newVal,oldVal);
+		})
+		
+		data2.msg="好嗨呦";
+		
+	</script>
+</html>

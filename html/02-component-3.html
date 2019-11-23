@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>component-3 父子组件关系</title>
+	</head>
+	<body>
+		<h1>component-3 父子组件关系</h1>
+		<hr>
+		<div id="app">
+			<dog name="erha"></dog>
+		</div>
+
+		<template id="dog">
+			<div>
+				<p style="color:red">Dog is human friend</p>
+				<kind :name="name"></kind>
+			</div>
+		</template>
+		
+		<template id="kind">
+			<p style="color: green;">kind {{name}}</p>
+		</template>
+	
+	</body>
+	<script type="text/javascript">
+		/* 
+			子组件就是在组件里再去定义组件
+		 */
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: 'dddddddd'
+			},
+			components: {
+				dog:{
+					props:['name'],
+					template:"#dog",
+					components:{
+						kind:{
+							props:['name'],
+							template:"#kind"
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>

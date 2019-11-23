@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>template模板</title>
+	</head>
+	<body>
+		<h1>template模板</h1><hr>
+		<div id="app">
+			we
+		</div>
+		<!-- 第二种 -->
+		<template id='app2'>
+			<h2 style="color:red;">我是模板1{{msg}}</h2>
+		</template>
+		
+		<!-- 第三种 *** type="x-template"-->
+		<script type="x-template" id='app3'>
+			<h2 style="color:blue;">我是模板sdds {{msg}}</h2>
+		</script>
+		
+	</body>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'hello'
+			},
+			//第一种
+			/* template:`
+			
+			<h2 style="color:red;">我是模板1{{msg}}</h2>
+			
+			` */
+			//第二种 标签式 需要template标签
+			//template:'#app2'
+			//第三种script标签
+			template:'#app3'
+		});
+	</script>
+</html>

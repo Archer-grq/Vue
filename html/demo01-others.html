@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-pre & v-cloak & v-once</title>
+	</head>
+	<body>
+		<h1>v-pre & v-cloak & v-once</h1><hr>
+		<div id="app">
+			
+			<!-- 原样输出 -->
+			<p v-pre>{{msg}}</p>
+			
+			<p v-cloak>视图渲染完成后才显示</p>
+			
+			<!-- v-once里面内容只出现一次 数据改变后不会发生发生改变 -->
+			<p v-once>{{msg}}</p>
+			<p><input type="text" v-model="msg"></p>
+			<p>{{msg}}</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'hello world'
+			}
+		});
+	</script>
+</html>

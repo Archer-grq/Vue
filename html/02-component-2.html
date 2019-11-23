@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>component-2 组件pros设置属性</title>
+	</head>
+	<body>
+		<h1>component-2 组件</h1><hr>
+		<div id="app">
+			<grq :msg="msg"></grq>
+			<hr>
+			<grq msg="msg"></grq>
+		</div>
+		
+		<template id="grq">
+			<div>
+				<p>msg: {{msg}}</p>
+				<p>m: {{m}}</p>
+			</div>
+		</template>
+		
+	</body>
+	<script type="text/javascript">
+		
+	
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'appmsg'
+			},
+			components:{
+				grq:{
+					props:['msg','city'],
+					template:'#grq',
+					data:function(){
+						return {
+							m:'m'
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>

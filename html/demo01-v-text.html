@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-text & v-html</title>
+	</head>
+	<body>
+		<h1>v-text & v-html</h1><hr>
+		<div id="app">
+			<p v-text="msg"></p>
+			<p v-html="msg"></p>
+			<!-- v-html 不安全 -->
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'<h4>test vue ...</h4>',
+			}
+		});
+	</script>
+</html>

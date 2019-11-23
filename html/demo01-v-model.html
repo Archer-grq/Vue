@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-model</title>
+	</head>
+	<body>
+		<h1>v-model</h1><hr>
+		<div id="app">
+			<p>{{msg}}</p>
+			<!-- 单行文本框 -->
+			<p><input type="text" v-model="msg"></p>
+			<p><input type="text" v-model.lazy="msg"></p><!-- v-model.lazy 延迟加载 在失去焦点后改变 -->
+			<p><input type="text" v-model.number="msg"></p><!-- v-model.number 只有输入数字才会改变 -->
+			<p><input type="text" v-model.trim="msg"></p><!-- v-model.trim 去掉前后空格 中间空格不影响 -->
+				
+			<!-- 文本域 -->
+			<textarea rows="7" cols="30" v-model="msg"></textarea>
+			
+			<!-- 多选框绑定一个值 -->
+			<p>
+				<input type="checkbox" id="cb" v-model="isTrue"/>
+				<label for="cb">{{isTrue}}</label>
+			</p>
+			
+			<!-- 多选框绑定一个数组 -->
+			<p>
+				<input type="checkbox" id="tom" v-model="names" value="tom"/>
+				<label for="tom">tom</label>
+				<input type="checkbox" id="cat" v-model="names" value="cat"/>
+				<label for="cat">cat</label>
+				<input type="checkbox" id="ros" v-model="names" value="ros"/>
+				<label for="ros">ros</label>
+				<input type="checkbox" id="jck" v-model="names" value="jck"/>
+				<label for="jck">jck</label>
+				<p>{{names}}</p>
+			</p>
+			
+			<!-- 单选框绑定一个数组 -->
+			<p>
+				<input type="radio" id="boy" value="男" v-model="sex" />
+				<label for="boy">男</label>
+				<input type="radio" id="girl" value="女" v-model="sex"/>
+				<label for="girl">女</label>
+				<p>性别：{{sex}}</p>
+			</p>
+			
+		</div> 
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:"hello",
+				isTrue:true,
+				names:[],
+				sex:'男'
+			},
+			
+		});
+	</script>
+</html>

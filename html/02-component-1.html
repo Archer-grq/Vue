@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>component-1 组件</title>
+	</head>
+	<body>
+		<h1>component-1 组件</h1><hr>
+		<div id="app">
+			<my-grg :ll="msg"></my-grg>
+			<grq></grq>
+		</div>
+		<template id='grq'>
+			<h1>grq {{msg}} id</h1>
+		</template>
+		
+	</body>
+	<script type="text/javascript">
+		
+		//注册全局组件
+		Vue.component('my-grg',{
+			props:['ll'],
+			template:'<h1>hello world {{ll}}</h1>',
+			data:function(){
+				return {
+					msg:'hello'
+				}
+			}
+			
+		});
+		
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'dddddddd'
+			},
+			//局部组件
+			components:{
+				'grq':{
+					template:'#grq',
+					data:function(){
+						return {
+							msg:'hello'
+						}
+					}
+				}
+			}
+		});
+	</script>
+</html>

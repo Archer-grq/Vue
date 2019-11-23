@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>vue-extend 扩展</title>
+	</head>
+	<body>
+		<h1>vue-extend 扩展</h1><hr>
+		<div id="app">
+			<!--<author></author>  -->
+			<div id="author"></div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		/* 	定义
+			var authorUrl = Vue.extend({
+				template:"<p><a href='{{authorUrl}}'>{{authorName}}</a></p>",
+				data:function(){
+					return{
+						authorUrl:"http://www.baidu.com",
+						authorName:'百度'
+					}
+				}
+			})
+			
+		 挂载方式
+		 1.标签方式
+			 <author></author>
+			 new authorUrl().$mount('author');
+		 2.id方式
+			 <div id="author"></div>
+			 new authorUrl().$mount('#author');
+		 3.class方式
+			 <div class="author"></div>
+			 new authorUrl().$mount('.author');
+		 */
+		var authorUrl = Vue.extend({
+			template:"<p><a href='{{authorUrl}}'>{{authorName}}</a></p>",
+			data:function(){
+				return{
+					authorUrl:"http://www.baidu.com",
+					authorName:'百度'
+				}
+			}
+		})
+		//挂载
+		// new authorUrl().$mount('author');
+		new authorUrl().$mount('#author');
+		
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				
+			}
+		});
+	</script>
+</html>

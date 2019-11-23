@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-on</title>
+	</head>
+	<body>
+		<h1>v-on</h1><hr>
+		<div id="app">
+			本场比赛得分：{{score}}
+			<p>
+				<button type="button" @click="addScore(score)">加分</button>
+				<button type="button" @click="decreaseScore(score)">减分</button>
+				<input type="text" @keyup.enter="onEnter()" v-model="score2">
+			</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				score:0,
+				score2:1
+			},
+			methods:{
+				addScore:function(){
+					this.score++;
+				},
+				decreaseScore:function(){
+					this.score--;
+				},
+				onEnter:function(){
+					this.score+=parseInt(this.score2)
+				}
+				
+			}
+		});
+	</script>
+</html>

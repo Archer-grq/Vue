@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>v-bind</title>
+		<style>
+			.classA{
+				color:red;
+			}
+			.classB{
+				font-size: 150%;
+			}
+			.classC{
+				font-family: 楷体;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>v-bind</h1>
+		<div id="app">
+			<p><img v-bind:src="imgSrc" width="400px"></p>
+			<p><a :href="webUrl">百度</a></p>
+			
+			<!-- 绑定css -->
+			<p :class="className">1.绑定css</p>
+			<p :class="{classA:isOk}">2.绑定css中的判断</p> <!-- classA是css里的类名 isOk是数据的变量名 -->
+			<p :class="[classA,classB,classC]">3.绑定css中的数组</p> 
+			<p :class="isOk?classB:classC">4.绑定css中的三元运算符</p> 
+			<p>
+				<input type="checkbox" id="val" v-model="isOk" />
+				<label for="val">{{isOk}}</label>
+			</p>
+			
+			<!-- 绑定style属性 -->
+			<p :style="{color:green,fontSize:font}">5.绑定style属性</p><!-- 属性值只能是变量 -->
+			
+			<!-- 对象绑定style属性 -->
+			<p :style="styleObj">6.对象绑定style属性</p>
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				imgSrc:'../img/timg.jfif',
+				webUrl:'http://www.baidu.com',
+				className:'classA',
+				isOk:false,
+				classA:'classA',
+				classB:'classB',
+				classC:'classC',
+				green:'green',
+				font:'30px',
+				styleObj:{
+					color:'blue',
+					fontSize:'150%',
+				}
+			}
+		});
+	</script>
+</html>
