@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+		<title>example01 实例</title>
+	</head>
+	<body>
+		<h1>example01 实例</h1><hr>
+		<div id="app">
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				
+			},
+			//挂载jquery
+			mounted:function(){
+				$('#app').html('我是jquery');
+			},
+			methods:{
+				add:function(){
+					console.log("内部构造器");
+				}
+					
+			}
+			
+		});
+		vm.add();
+	</script>
+</html>
