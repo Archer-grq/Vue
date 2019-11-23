@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>example04 内置组件</title>
+	</head>
+	<body>
+		<h1>example04 内置组件</h1><hr>
+		<div id="app">
+			<!-- 传值 -->
+			<lmg>
+				<span slot="addr">{{lmgData.addr}}</span>
+				<span slot="netName">{{lmgData.netName}}</span>
+				<span slot="skill">{{lmgData.skill}}</span>
+			</lmg>
+		</div>
+		
+		<template id="temp">
+			<!-- 接收 -->
+			<div>
+				<p>地址：<slot name="addr"></slot></p>
+				<p>网名：<slot name="netName"></slot></p>
+				<!-- 也可以直接赋值 -->
+				<!-- <p>网名：<slot>tom</slot></p> -->
+				<p>技能：<slot name="skill"></slot></p>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript">
+		//定义模板
+		var lmg={
+			template:'#temp'
+		}
+		
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				lmgData:{
+					addr:'http://www.baidu.com',
+					netName:'lmg',
+					skill:"All Thing"
+				}
+			},
+			components:{
+				lmg:lmg
+			}
+			
+		});
+		
+	</script>
+</html>
