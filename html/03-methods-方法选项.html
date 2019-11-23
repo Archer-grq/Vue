@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<title>methods-Option方法选项</title>
+	</head>
+	<body>
+		<h1>methods-Option方法选项</h1><hr>
+		<div id="app">
+			<p>{{num}}</p>
+			<p><button @click="add()">ADD</button></p>
+			<!-- @click.native="add(2)" 组件添加本地方法 -->
+			<p><btn @click.native="add(2)">ADD</btn></p>
+		</div>
+		<!-- 外部add -->
+		<p><button onclick="vm.add(5)">外部ADD</button></p>
+	</body>
+	<script type="text/javascript">
+		var btn={
+			template:`<button>btn组件</button>`
+		}
+		
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				num:1
+			},
+			methods:{
+				add:function(num){
+					if(isNaN(num)){
+						this.num++;
+					}else{
+						this.num += num;
+					}
+				}
+			},
+			components:{
+				btn:btn
+			}
+		});
+	</script>
+</html>
