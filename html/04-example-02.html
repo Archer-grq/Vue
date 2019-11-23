@@ -9,11 +9,15 @@
 	<body>
 		<h1>example02 实例方法</h1><hr>
 		<div id="app">
+			ff
+		</div>
+		<div id="app2">
 			
 		</div>
 		<p><button onclick="destory()">Destory</button></p>
 		<p><button onclick="reload()">update</button></p>
 		<p><button onclick="tick()">update data</button></p>
+		<p><button onclick="mount()">mount</button></p>
 	</body>
 	<script type="text/javascript">
 		
@@ -43,6 +47,8 @@
 		//销毁的方法
 		function destory(){
 			console.log("销毁");
+			//销毁只是只是完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
+			//相当于解除挂载，vm对象还存在并未销毁
 			vm.$destroy();
 		}
 		
@@ -57,7 +63,11 @@
 			//修改数据后回调
 			vm.$nextTick(function(){
 				console.log("数据更新完之后，回调这个函数。。。。");
-			})
+			});
+			console.log(vm);
+		}
+		function mount(){
+			vm.$mount();
 		}
 	</script>
 </html>
